@@ -1,3 +1,4 @@
 import Search from './Search';
+import MyProfile from './MyProfile';
 
-export {Search};
+export {Search, MyProfile};

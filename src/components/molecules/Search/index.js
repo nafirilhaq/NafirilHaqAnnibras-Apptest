@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     height: 16,
     position: 'absolute',
     left: 16,
-    top: 16,
+    top: 13,
     tintColor: colors.gray,
   },
   textInput: {
