@@ -1,9 +1,25 @@
 import {StyleSheet, Text, TextInput, View, Image} from 'react-native';
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {colors} from '../../utils';
-import {Button, Gap, MyProfile, Search} from '../../components';
+import {Button, Gap, MyProfile, ProfileItem, Search} from '../../components';
+import Axios from 'axios';
 
 const Home = () => {
+  const [contact, setContact] = useState([]);
+  const getContactData = () => {
+    Axios.get('https://simple-contact-crud.herokuapp.com/contact')
+      .then(res => {
+        setContact(res.data.data);
+      })
+      .catch(err => {
+        console.log('err', err.message);
+      });
+  };
+
+  useEffect(() => {
+    getContactData();
+  }, []);
+
   return (
     <View style={styles.page}>
       <View style={styles.searchWrapper}>
@@ -16,7 +32,17 @@ const Home = () => {
       <View style={styles.myProfileWrapper}>
         <MyProfile />
       </View>
-      <Text>Home</Text>
+      <View style={styles.contactWrapper}>
+        {contact.map(val => {
+          return (
+            <ProfileItem
+              image={val.photo}
+              firstName={val.firstName}
+              lastName={val.lastName}
+            />
+          );
+        })}
+      </View>
     </View>
   );
 };
@@ -40,5 +66,8 @@ const styles = StyleSheet.create({
     backgroundColor: colors.bggray,
     paddingLeft: 20,
     paddingRight: 40,
+  },
+  contactWrapper: {
+    paddingHorizontal: 20,
   },
 });
