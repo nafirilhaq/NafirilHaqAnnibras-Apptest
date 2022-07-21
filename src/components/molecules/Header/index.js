@@ -4,7 +4,7 @@ import {colors} from '../../../utils';
 import {IcBack, IcEdit, IcDelete} from '../../../assets';
 import {useNavigation} from '@react-navigation/native';
 
-const Header = ({isMyProfile}) => {
+const Header = ({title, isDetail}) => {
   const navigation = useNavigation();
 
   return (
@@ -12,11 +12,11 @@ const Header = ({isMyProfile}) => {
       <TouchableOpacity activeOpacity={0.8} onPress={() => navigation.goBack()}>
         <Image source={IcBack} style={styles.back} />
       </TouchableOpacity>
-      {isMyProfile ? (
-        <Text style={styles.titleMy}>My Profile</Text>
+      {!isDetail ? (
+        <Text style={styles.titleMy}>{title}</Text>
       ) : (
         <>
-          <Text style={styles.title}>Contact Detail</Text>
+          <Text style={styles.title}>{title}</Text>
           <View style={styles.buttonWrapper}>
             <Image source={IcDelete} style={styles.buttonDelete} />
             <Image source={IcEdit} style={styles.buttonEdit} />

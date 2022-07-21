@@ -3,9 +3,9 @@ import React from 'react';
 import {colors} from '../../../utils';
 import {IcPlus} from '../../../assets';
 
-const Button = () => {
+const Button = ({onPress}) => {
   return (
-    <TouchableOpacity style={styles.container}>
+    <TouchableOpacity style={styles.container} onPress={onPress}>
       <Image source={IcPlus} style={styles.image} />
     </TouchableOpacity>
   );

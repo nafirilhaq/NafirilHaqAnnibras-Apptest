@@ -1,6 +1,13 @@
 import React, {useEffect} from 'react';
-import {StyleSheet, View} from 'react-native';
+import {
+  Image,
+  ScrollView,
+  StyleSheet,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
+import {IcAddContact} from '../../assets';
 import {Button, Gap, MyProfile, ProfileItem, Search} from '../../components';
 import {getContactData} from '../../redux/action';
 import {colors} from '../../utils';
@@ -9,6 +16,10 @@ const Home = ({navigation}) => {
   const {contact} = useSelector(state => state.contactReducer);
 
   const dispatch = useDispatch();
+
+  const handleAddContact = () => {
+    navigation.navigate('AddContact');
+  };
 
   useEffect(() => {
     dispatch(getContactData());
@@ -39,6 +50,11 @@ const Home = ({navigation}) => {
           );
         })}
       </View>
+      <TouchableOpacity
+        style={styles.addContactWrapper}
+        onPress={handleAddContact}>
+        <Image source={IcAddContact} />
+      </TouchableOpacity>
     </View>
   );
 };
@@ -65,5 +81,10 @@ const styles = StyleSheet.create({
   },
   contactWrapper: {
     paddingHorizontal: 20,
+  },
+  addContactWrapper: {
+    position: 'absolute',
+    bottom: 0,
+    right: 0,
   },
 });

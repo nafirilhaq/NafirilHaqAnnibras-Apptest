@@ -13,7 +13,7 @@ const MyProfileDetail = ({route}) => {
 
   return (
     <View style={styles.page}>
-      <Header isMyProfile />
+      <Header title="My Profile" />
       <View style={styles.content}>
         <Image source={val.photo} style={styles.avatar} />
         <Text style={styles.name}>{val.name}</Text>

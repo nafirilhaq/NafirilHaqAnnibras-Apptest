@@ -4,5 +4,6 @@ import IcRectangle from './Rectangle.png';
 import IcBack from './arrow_back.png';
 import IcEdit from './edit.png';
 import IcDelete from './delete.png';
+import IcAddContact from './add_contact.png';
 
-export {IcSearch, IcPlus, IcRectangle, IcBack, IcEdit, IcDelete};
+export {IcSearch, IcPlus, IcRectangle, IcBack, IcEdit, IcDelete, IcAddContact};

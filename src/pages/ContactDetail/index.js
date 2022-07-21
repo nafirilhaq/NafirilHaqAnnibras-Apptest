@@ -17,7 +17,7 @@ const ContactDetail = ({route}) => {
 
   return (
     <View style={styles.page}>
-      <Header />
+      <Header isDetail title="Contact Detail" />
       <View style={styles.content}>
         <SetImage />
         <Text style={styles.name}>
@@ -36,7 +36,6 @@ export default ContactDetail;
 const styles = StyleSheet.create({
   page: {
     flex: 1,
-    backgroundColor: colors.white,
   },
   content: {
     flex: 1,
