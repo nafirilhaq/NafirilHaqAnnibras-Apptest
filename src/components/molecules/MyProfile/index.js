@@ -1,22 +1,30 @@
-import {StyleSheet, Text, View, Image} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
 import React from 'react';
-import {ImgBeckham, IcRectangle, ImgProfile} from '../../../assets';
+import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {useSelector} from 'react-redux';
+import {IcRectangle, ImgBeckham} from '../../../assets';
 import {colors} from '../../../utils';
 
 const MyProfile = () => {
+  const navigation = useNavigation();
+  const profile = useSelector(state => state.profileReducer);
+
   return (
-    <View style={styles.container}>
+    <TouchableOpacity
+      style={styles.container}
+      activeOpacity={0.8}
+      onPress={() => navigation.navigate('MyProfileDetail', profile)}>
       <View style={styles.imageWrapper}>
-        <Image source={ImgBeckham} style={styles.imgProfile} />
+        <Image source={profile.photo} style={styles.imgProfile} />
       </View>
       <View style={styles.nameWrapper}>
-        <Text style={styles.name}>Nafiril Haq Annibras</Text>
-        <Text style={styles.job}>Software Engineer</Text>
+        <Text style={styles.name}>{profile.name}</Text>
+        <Text style={styles.job}>{profile.job}</Text>
       </View>
       <View>
         <Image source={IcRectangle} />
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 

@@ -4,34 +4,31 @@ import {colors} from '../../utils';
 import {ImgDefault} from '../../assets';
 import {Header, ItemValue} from '../../components';
 
-const ContactDetail = ({route}) => {
+const MyProfileDetail = ({route}) => {
   const val = route.params;
 
-  const SetImage = () => {
-    if (val.photo === '' || val.photo === 'N/A') {
-      return <Image source={ImgDefault} style={styles.avatar} />;
-    } else {
-      return <Image source={{uri: val.photo}} style={styles.avatar} />;
-    }
-  };
+  useEffect(() => {
+    console.log('data', val);
+  }, []);
 
   return (
     <View style={styles.page}>
-      <Header />
+      <Header isMyProfile />
       <View style={styles.content}>
-        <SetImage />
-        <Text style={styles.name}>
-          {val.firstName} {val.lastName}
-        </Text>
+        <Image source={val.photo} style={styles.avatar} />
+        <Text style={styles.name}>{val.name}</Text>
         <View style={styles.information}>
+          <ItemValue item="Phone" value={val.phone} />
+          <ItemValue item="Email" value={val.email} />
           <ItemValue item="Age" value={val.age} />
+          <ItemValue item="Job" value={val.job} />
         </View>
       </View>
     </View>
   );
 };
 
-export default ContactDetail;
+export default MyProfileDetail;
 
 const styles = StyleSheet.create({
   page: {
@@ -60,6 +57,6 @@ const styles = StyleSheet.create({
     backgroundColor: colors.darkgray,
     marginTop: 20,
     borderRadius: 12,
-    padding: 16,
+    paddingHorizontal: 16,
   },
 });
