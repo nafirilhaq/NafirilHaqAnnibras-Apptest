@@ -1,24 +1,22 @@
 import React, {useEffect, useState} from 'react';
-import {
-  Image,
-  ScrollView,
-  StyleSheet,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import {Image, StyleSheet, TouchableOpacity, View} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
-import {IcAddContact} from '../../assets';
+import {IcAddContact, IcSearch} from '../../assets';
 import {Button, Gap, MyProfile, ProfileItem, Search} from '../../components';
-import {getContactData} from '../../redux/action';
+import {getContactData, searchContactById} from '../../redux/action';
 import {colors} from '../../utils';
 
 const Home = ({navigation}) => {
   const {contact} = useSelector(state => state.contactReducer);
-
+  const [searchForm, setSearchForm] = useState('');
   const dispatch = useDispatch();
 
   const handleAddContact = () => {
     navigation.navigate('AddContact');
+  };
+
+  const handleSearch = () => {
+    dispatch(searchContactById(searchForm));
   };
 
   useEffect(() => {
@@ -29,9 +27,9 @@ const Home = ({navigation}) => {
     <View style={styles.page}>
       <View style={styles.searchWrapper}>
         <Gap width={20} />
-        <Search />
+        <Search onChangeText={setSearchForm} />
         <Gap width={8} />
-        <Button type="search" />
+        <Button type="search" img={IcSearch} onPress={handleSearch} />
         <Gap width={20} />
       </View>
       <View style={styles.myProfileWrapper}>
@@ -82,7 +80,8 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     backgroundColor: colors.bggray,
     marginTop: -20,
-    paddingTop: 20,
+    paddingTop: 10,
+    paddingBottom: 10,
   },
   myProfileWrapper: {
     backgroundColor: colors.bggray,

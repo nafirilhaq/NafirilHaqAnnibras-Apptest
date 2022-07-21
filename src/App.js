@@ -3,13 +3,25 @@ import React from 'react';
 import {Provider} from 'react-redux';
 import store from './redux/store';
 import Router from './router';
+import FlashMessage from 'react-native-flash-message';
+import {Loading} from './components';
+import {useSelector} from 'react-redux';
+
+const MainApp = () => {
+  const {isLoading} = useSelector(state => state.globalReducer);
+  return (
+    <NavigationContainer>
+      <Router />
+      <FlashMessage position="top" />
+      {isLoading && <Loading />}
+    </NavigationContainer>
+  );
+};
 
 const App = () => {
   return (
     <Provider store={store}>
-      <NavigationContainer>
-        <Router />
-      </NavigationContainer>
+      <MainApp />
     </Provider>
   );
 };

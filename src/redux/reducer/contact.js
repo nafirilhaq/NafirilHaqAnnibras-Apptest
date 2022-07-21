@@ -1,5 +1,6 @@
 initStateContact = {
   contact: [],
+  searchContact: {},
 };
 
 export const contactReducer = (state = initStateContact, action) => {
@@ -8,6 +9,15 @@ export const contactReducer = (state = initStateContact, action) => {
       ...state,
       contact: action.values,
     };
+  }
+  if (action.type === 'SET_SEARCH') {
+    return {
+      ...state,
+      searchContact: action.values,
+    };
+  }
+  if (action.type === 'RESET_SEARCH') {
+    return state;
   }
   return state;
 };

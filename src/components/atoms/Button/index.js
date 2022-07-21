@@ -3,11 +3,11 @@ import {Image, StyleSheet, Text, TouchableOpacity} from 'react-native';
 import {IcSearch} from '../../../assets';
 import {colors} from '../../../utils';
 
-const Button = ({onPress, type}) => {
+const Button = ({onPress, type, img}) => {
   if (type === 'search') {
     return (
       <TouchableOpacity style={styles.containerSearch} onPress={onPress}>
-        <Image source={IcSearch} style={styles.image} />
+        <Image source={img} style={styles.image} />
       </TouchableOpacity>
     );
   }

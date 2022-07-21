@@ -4,6 +4,7 @@ import {
   ContactDetail,
   Home,
   MyProfileDetail,
+  SearchContact,
   Splash,
   UpdateContact,
 } from '../pages';

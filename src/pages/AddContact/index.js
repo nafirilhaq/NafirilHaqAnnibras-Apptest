@@ -1,22 +1,18 @@
 import {Image, StyleSheet, Text, View} from 'react-native';
 import React from 'react';
-import {Button, Form, Header} from '../../components';
+import {Button, CustomForm, Form, Header} from '../../components';
 import {colors} from '../../utils';
 import {ImgDefault} from '../../assets';
-import useForm from '../../utils/useForm';
 import {useDispatch} from 'react-redux';
 import {saveContact} from '../../redux/action';
+import {useForm} from 'react-hook-form';
 
 const AddContact = ({navigation}) => {
   const dispatch = useDispatch();
-  const [form, setForm] = useForm({
-    firstName: '',
-    lastName: '',
-    age: 0,
-  });
+  const {control, handleSubmit} = useForm();
 
-  const handleSaveContact = () => {
-    dispatch(saveContact(form, navigation));
+  const handleSaveContact = data => {
+    dispatch(saveContact(data, navigation));
   };
 
   return (
@@ -25,24 +21,20 @@ const AddContact = ({navigation}) => {
       <View style={styles.content}>
         <Image source={ImgDefault} style={styles.avatar} />
         <View style={styles.formWrapper}>
-          <Form
+          <CustomForm
+            name="firstName"
             placeholder="First Name"
-            value={form.firstName}
-            onChangeText={e => setForm('firstName', e)}
+            control={control}
           />
-          <Form
+          <CustomForm
+            name="lastName"
             placeholder="Last Name"
-            value={form.lastName}
-            onChangeText={e => setForm('lastName', e)}
+            control={control}
           />
-          <Form
-            placeholder="Age"
-            value={form.age}
-            onChangeText={e => setForm('age', e)}
-          />
+          <CustomForm name="age" placeholder="Age" control={control} />
         </View>
         <View style={styles.buttonWrapper}>
-          <Button onPress={handleSaveContact} />
+          <Button onPress={handleSubmit(handleSaveContact)} />
         </View>
       </View>
     </View>

@@ -3,13 +3,15 @@ import React from 'react';
 import {colors} from '../../../utils';
 import {IcSearch} from '../../../assets';
 
-const Search = () => {
+const Search = ({onChangeText, value}) => {
   return (
     <View style={styles.container}>
       <TextInput
         style={styles.textInput}
         placeholder="Search"
         placeholderTextColor={colors.gray}
+        onChangeText={onChangeText}
+        value={value}
       />
     </View>
   );

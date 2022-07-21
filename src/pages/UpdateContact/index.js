@@ -1,11 +1,11 @@
-import {Image, StyleSheet, Text, View} from 'react-native';
-import React, {useEffect} from 'react';
-import {Button, CustomForm, Form, Header} from '../../components';
-import {colors} from '../../utils';
-import {ImgDefault} from '../../assets';
+import React from 'react';
+import {useForm} from 'react-hook-form';
+import {Image, StyleSheet, View} from 'react-native';
 import {useDispatch} from 'react-redux';
-import {saveContact, updateContact} from '../../redux/action';
-import {useForm, Controller} from 'react-hook-form';
+import {ImgDefault} from '../../assets';
+import {Button, CustomForm, Header} from '../../components';
+import {updateContact} from '../../redux/action';
+import {colors} from '../../utils';
 
 const UpdateContact = ({navigation, route}) => {
   const dataContact = route.params;
