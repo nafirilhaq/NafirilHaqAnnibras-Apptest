@@ -17,7 +17,7 @@ const ContactDetail = ({route}) => {
 
   return (
     <View style={styles.page}>
-      <Header isDetail title="Contact Detail" />
+      <Header isDetail title="Contact Detail" dataContact={val} />
       <View style={styles.content}>
         <SetImage />
         <Text style={styles.name}>

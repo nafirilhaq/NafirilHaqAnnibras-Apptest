@@ -9,8 +9,8 @@ const Search = () => {
       <TextInput
         style={styles.textInput}
         placeholder="Search"
-        placeholderTextColor={colors.gray}></TextInput>
-      <Image source={IcSearch} style={styles.image} />
+        placeholderTextColor={colors.gray}
+      />
     </View>
   );
 };
@@ -23,20 +23,12 @@ const styles = StyleSheet.create({
     width: 40,
     height: 40,
   },
-  image: {
-    width: 16,
-    height: 16,
-    position: 'absolute',
-    left: 16,
-    top: 13,
-    tintColor: colors.gray,
-  },
   textInput: {
     backgroundColor: colors.darkgray,
     color: colors.gray,
     fontSize: 16,
     paddingVertical: 8,
-    paddingLeft: 40,
+    paddingLeft: 16,
     borderRadius: 10,
   },
 });

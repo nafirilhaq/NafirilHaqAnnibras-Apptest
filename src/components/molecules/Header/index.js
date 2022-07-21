@@ -3,9 +3,20 @@ import React from 'react';
 import {colors} from '../../../utils';
 import {IcBack, IcEdit, IcDelete} from '../../../assets';
 import {useNavigation} from '@react-navigation/native';
+import {useDispatch} from 'react-redux';
+import {deleteContact} from '../../../redux/action';
 
-const Header = ({title, isDetail}) => {
+const Header = ({title, isDetail, dataContact}) => {
+  const dispatch = useDispatch();
   const navigation = useNavigation();
+
+  const handleDelete = () => {
+    dispatch(deleteContact(dataContact.id, navigation));
+  };
+
+  const handleUpdate = () => {
+    navigation.navigate('UpdateContact', dataContact);
+  };
 
   return (
     <View style={styles.container}>
@@ -18,8 +29,16 @@ const Header = ({title, isDetail}) => {
         <>
           <Text style={styles.title}>{title}</Text>
           <View style={styles.buttonWrapper}>
-            <Image source={IcDelete} style={styles.buttonDelete} />
-            <Image source={IcEdit} style={styles.buttonEdit} />
+            <TouchableOpacity
+              activeOpacity={0.8}
+              onPress={() => handleDelete()}>
+              <Image source={IcDelete} style={styles.buttonDelete} />
+            </TouchableOpacity>
+            <TouchableOpacity
+              activeOpacity={0.8}
+              onPress={() => handleUpdate()}>
+              <Image source={IcEdit} style={styles.buttonEdit} />
+            </TouchableOpacity>
           </View>
         </>
       )}

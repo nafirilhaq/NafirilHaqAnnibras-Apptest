@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   Image,
   ScrollView,
@@ -31,24 +31,34 @@ const Home = ({navigation}) => {
         <Gap width={20} />
         <Search />
         <Gap width={8} />
-        <Button />
+        <Button type="search" />
         <Gap width={20} />
       </View>
       <View style={styles.myProfileWrapper}>
         <MyProfile />
       </View>
       <View style={styles.contactWrapper}>
-        {contact.map(val => {
-          return (
-            <ProfileItem
-              key={val.id}
-              image={val.photo}
-              firstName={val.firstName}
-              lastName={val.lastName}
-              onPress={() => navigation.navigate('ContactDetail', val)}
-            />
-          );
-        })}
+        {contact
+          .sort((a, b) => {
+            if (a.firstName < b.firstName) {
+              return -1;
+            }
+            if (a.firstName > b.firstName) {
+              return 1;
+            }
+            return 0;
+          })
+          .map(val => {
+            return (
+              <ProfileItem
+                key={val.id}
+                image={val.photo}
+                firstName={val.firstName}
+                lastName={val.lastName}
+                onPress={() => navigation.navigate('ContactDetail', val)}
+              />
+            );
+          })}
       </View>
       <TouchableOpacity
         style={styles.addContactWrapper}

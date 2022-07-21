@@ -11,12 +11,36 @@ export const getContactData = () => dispatch => {
     });
 };
 
-export const saveContact = (form, navigate) => dispatch => {
+export const saveContact = (form, navigation) => dispatch => {
   Axios.post(`${API_HOST}/contact`, form)
     .then(res => {
-      console.log('save contact', res);
+      navigation.replace('Home');
     })
     .catch(err => {
-      console.log('not save', err.message);
+      console.log('not save', err);
+    });
+};
+
+export const deleteContact = (id, navigation) => dispatch => {
+  console.log('id', id);
+  Axios.delete(`${API_HOST}/contact/${id}`)
+    .then(res => {
+      console.log('delete berhasil', res);
+
+      navigation.reset({index: 0, routes: [{name: 'Home'}]});
+    })
+    .catch(err => {
+      console.log('delete gagal', err);
+    });
+};
+
+export const updateContact = (id, form, navigation) => dispatch => {
+  Axios.put(`${API_HOST}/contact/${id}`, form)
+    .then(res => {
+      console.log('Update Sukses', res);
+      navigation.reset({index: 0, routes: [{name: 'Home'}]});
+    })
+    .catch(err => {
+      console.log('update err', err);
     });
 };

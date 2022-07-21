@@ -1,6 +1,12 @@
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import React from 'react';
-import {ContactDetail, Home, MyProfileDetail, Splash} from '../pages';
+import {
+  ContactDetail,
+  Home,
+  MyProfileDetail,
+  Splash,
+  UpdateContact,
+} from '../pages';
 import AddContact from '../pages/AddContact';
 
 const Stack = createNativeStackNavigator();
@@ -31,6 +37,11 @@ const Router = () => {
       <Stack.Screen
         name="AddContact"
         component={AddContact}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="UpdateContact"
+        component={UpdateContact}
         options={{headerShown: false}}
       />
     </Stack.Navigator>

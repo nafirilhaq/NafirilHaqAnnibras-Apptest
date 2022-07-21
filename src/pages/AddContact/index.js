@@ -7,7 +7,7 @@ import useForm from '../../utils/useForm';
 import {useDispatch} from 'react-redux';
 import {saveContact} from '../../redux/action';
 
-const AddContact = () => {
+const AddContact = ({navigation}) => {
   const dispatch = useDispatch();
   const [form, setForm] = useForm({
     firstName: '',
@@ -16,7 +16,7 @@ const AddContact = () => {
   });
 
   const handleSaveContact = () => {
-    dispatch(saveContact(form));
+    dispatch(saveContact(form, navigation));
   };
 
   return (
@@ -41,7 +41,7 @@ const AddContact = () => {
             onChangeText={e => setForm('age', e)}
           />
         </View>
-        <View>
+        <View style={styles.buttonWrapper}>
           <Button onPress={handleSaveContact} />
         </View>
       </View>
@@ -73,5 +73,10 @@ const styles = StyleSheet.create({
     marginTop: 20,
     borderRadius: 12,
     paddingHorizontal: 16,
+  },
+  buttonWrapper: {
+    marginTop: 16,
+    width: '100%',
+    paddingHorizontal: 100,
   },
 });
