@@ -3,9 +3,12 @@ import React, {useEffect, useState} from 'react';
 import {colors} from '../../utils';
 import {Button, Gap, MyProfile, ProfileItem, Search} from '../../components';
 import Axios from 'axios';
+import {useSelector} from 'react-redux';
 
 const Home = () => {
   const [contact, setContact] = useState([]);
+  const contactState = useSelector(state => state);
+
   const getContactData = () => {
     Axios.get('https://simple-contact-crud.herokuapp.com/contact')
       .then(res => {
@@ -17,6 +20,7 @@ const Home = () => {
   };
 
   useEffect(() => {
+    console.log('redux', contactState);
     getContactData();
   }, []);
 
