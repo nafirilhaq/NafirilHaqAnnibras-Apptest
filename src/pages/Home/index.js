@@ -3,25 +3,16 @@ import React, {useEffect, useState} from 'react';
 import {colors} from '../../utils';
 import {Button, Gap, MyProfile, ProfileItem, Search} from '../../components';
 import Axios from 'axios';
-import {useSelector} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
+import {getContactData} from '../../redux/action';
 
 const Home = () => {
-  const [contact, setContact] = useState([]);
-  const contactState = useSelector(state => state);
+  const {contact} = useSelector(state => state.contactReducer);
 
-  const getContactData = () => {
-    Axios.get('https://simple-contact-crud.herokuapp.com/contact')
-      .then(res => {
-        setContact(res.data.data);
-      })
-      .catch(err => {
-        console.log('err', err.message);
-      });
-  };
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log('redux', contactState);
-    getContactData();
+    dispatch(getContactData());
   }, []);
 
   return (
@@ -40,6 +31,7 @@ const Home = () => {
         {contact.map(val => {
           return (
             <ProfileItem
+              key={val.id}
               image={val.photo}
               firstName={val.firstName}
               lastName={val.lastName}
