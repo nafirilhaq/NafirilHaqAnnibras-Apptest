@@ -2,7 +2,7 @@ import {useNavigation} from '@react-navigation/native';
 import React from 'react';
 import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {useSelector} from 'react-redux';
-import {IcRectangle, ImgBeckham} from '../../../assets';
+import {IcRectangle} from '../../../assets';
 import {colors} from '../../../utils';
 
 const MyProfile = () => {

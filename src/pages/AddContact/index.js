@@ -1,11 +1,11 @@
-import {Image, StyleSheet, Text, View} from 'react-native';
 import React from 'react';
-import {Button, CustomForm, Form, Header} from '../../components';
-import {colors} from '../../utils';
-import {ImgDefault} from '../../assets';
-import {useDispatch} from 'react-redux';
-import {saveContact} from '../../redux/action';
 import {useForm} from 'react-hook-form';
+import {Image, StyleSheet, View} from 'react-native';
+import {useDispatch} from 'react-redux';
+import {ImgDefault} from '../../assets';
+import {Button, CustomForm, Header} from '../../components';
+import {saveContact} from '../../redux/action';
+import {colors} from '../../utils';
 
 const AddContact = ({navigation}) => {
   const dispatch = useDispatch();

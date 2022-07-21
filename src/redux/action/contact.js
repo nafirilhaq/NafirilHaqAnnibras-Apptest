@@ -53,16 +53,18 @@ export const updateContact = (id, form, navigation) => dispatch => {
     })
     .catch(err => {
       dispatch({type: 'SET_LOADING', value: false});
-      console.log('update err', err);
+      toast(err?.response?.data?.message);
     });
 };
 
 export const searchContactById = search => dispatch => {
+  dispatch({type: 'SET_LOADING', value: true});
   Axios.get(`${API_HOST}/contact/${search}`)
     .then(res => {
-      console.log(res);
+      dispatch({type: 'SET_LOADING', value: false});
     })
     .catch(err => {
-      console.log('gaada', err);
+      dispatch({type: 'SET_LOADING', value: false});
+      toast(err?.response?.data?.message);
     });
 };

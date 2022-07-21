@@ -1,8 +1,7 @@
-import {Image, StyleSheet, Text, View} from 'react-native';
 import React, {useEffect} from 'react';
-import {colors} from '../../utils';
-import {ImgDefault} from '../../assets';
+import {Image, StyleSheet, Text, View} from 'react-native';
 import {Header, ItemValue} from '../../components';
+import {colors} from '../../utils';
 
 const MyProfileDetail = ({route}) => {
   const val = route.params;

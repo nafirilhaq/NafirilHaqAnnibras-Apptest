@@ -1,6 +1,5 @@
 import React from 'react';
 import {Image, StyleSheet, Text, TouchableOpacity} from 'react-native';
-import {IcSearch} from '../../../assets';
 import {colors} from '../../../utils';
 
 const Button = ({onPress, type, img}) => {

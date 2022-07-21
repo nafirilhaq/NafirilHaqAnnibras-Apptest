@@ -1,7 +1,7 @@
-import {StyleSheet, Text, TextInput, View} from 'react-native';
 import React from 'react';
-import {colors} from '../../../utils';
 import {Controller} from 'react-hook-form';
+import {StyleSheet, TextInput, View} from 'react-native';
+import {colors} from '../../../utils';
 
 const CustomForm = ({control, name, ...rest}) => {
   return (

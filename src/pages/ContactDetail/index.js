@@ -1,8 +1,8 @@
+import React from 'react';
 import {Image, StyleSheet, Text, View} from 'react-native';
-import React, {useEffect} from 'react';
-import {colors} from '../../utils';
 import {ImgDefault} from '../../assets';
 import {Header, ItemValue} from '../../components';
+import {colors} from '../../utils';
 
 const ContactDetail = ({route}) => {
   const val = route.params;
