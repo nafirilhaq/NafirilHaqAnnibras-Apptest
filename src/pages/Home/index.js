@@ -1,12 +1,11 @@
-import {StyleSheet, Text, TextInput, View, Image} from 'react-native';
-import React, {useEffect, useState} from 'react';
-import {colors} from '../../utils';
+import React, {useEffect} from 'react';
+import {StyleSheet, View} from 'react-native';
+import {useDispatch, useSelector} from 'react-redux';
 import {Button, Gap, MyProfile, ProfileItem, Search} from '../../components';
-import Axios from 'axios';
-import {useSelector, useDispatch} from 'react-redux';
 import {getContactData} from '../../redux/action';
+import {colors} from '../../utils';
 
-const Home = () => {
+const Home = ({navigation}) => {
   const {contact} = useSelector(state => state.contactReducer);
 
   const dispatch = useDispatch();
@@ -35,6 +34,7 @@ const Home = () => {
               image={val.photo}
               firstName={val.firstName}
               lastName={val.lastName}
+              onPress={() => navigation.navigate('ContactDetail', val)}
             />
           );
         })}

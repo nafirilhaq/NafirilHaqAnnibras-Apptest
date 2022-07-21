@@ -1,16 +1,26 @@
-import {Image, StyleSheet, Text, View} from 'react-native';
 import React from 'react';
-import {ImgBeckham} from '../../../assets';
+import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {ImgDefault} from '../../../assets';
 import {colors} from '../../../utils';
 
-const ProfileItem = ({image, firstName, lastName}) => {
+const ProfileItem = ({image, firstName, lastName, onPress}) => {
+  const SetImage = () => {
+    if (image === '' || image === 'N/A') {
+      return <Image source={ImgDefault} style={styles.avatar} />;
+    } else {
+      return <Image source={{uri: image}} style={styles.avatar} />;
+    }
+  };
+
   return (
-    <View style={styles.container}>
-      <Image source={{uri: image}} style={styles.avatar} />
-      <Text style={styles.name}>
-        {firstName} {lastName}
-      </Text>
-    </View>
+    <TouchableOpacity onPress={onPress} activeOpacity={0.8}>
+      <View style={styles.container}>
+        <SetImage />
+        <Text style={styles.name}>
+          {firstName} {lastName}
+        </Text>
+      </View>
+    </TouchableOpacity>
   );
 };
 

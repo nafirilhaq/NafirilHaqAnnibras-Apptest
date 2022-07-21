@@ -1,13 +1,13 @@
-import {StyleSheet, Image, View} from 'react-native';
+import {StyleSheet, Image, View, TouchableOpacity} from 'react-native';
 import React from 'react';
 import {colors} from '../../../utils';
 import {IcPlus} from '../../../assets';
 
 const Button = () => {
   return (
-    <View style={styles.container}>
+    <TouchableOpacity style={styles.container}>
       <Image source={IcPlus} style={styles.image} />
-    </View>
+    </TouchableOpacity>
   );
 };
 

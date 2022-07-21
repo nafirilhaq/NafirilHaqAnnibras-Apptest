@@ -1,6 +1,6 @@
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import React from 'react';
-import {Home, Splash} from '../pages';
+import {ContactDetail, Home, Splash} from '../pages';
 
 const Stack = createNativeStackNavigator();
 
@@ -15,6 +15,11 @@ const Router = () => {
       <Stack.Screen
         name="Home"
         component={Home}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="ContactDetail"
+        component={ContactDetail}
         options={{headerShown: false}}
       />
     </Stack.Navigator>
